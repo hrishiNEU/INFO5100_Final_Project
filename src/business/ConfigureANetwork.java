@@ -4,7 +4,6 @@
  */
 package business;
 
-import java.util.ArrayList;
 import business.enterprise.EnterpriseDirectory;
 import business.organization.CommunityOrganization;
 import business.organization.DamageAssesmentDepartment;
@@ -256,8 +255,8 @@ public class ConfigureANetwork {
         HealthCareInstitution healthCare = new HealthCareInstitution(healthOrg, hospitalManager);
         LogisticsSupplyChainUnit logisiticsSupplyChain = new LogisticsSupplyChainUnit(logisticsOrg, logisticsCoordinator);
         ResourceManagementDivision resourceDiv = new ResourceManagementDivision(resourceMngOrg, resourceSpecialist);
-        ResponseTeamUnit updatedResponseUnit = new ResponseTeamUnit(responseTeamOrg, newResponseCoordinator, agent1);
-        
+
+        ResponseTeamUnit responseUnit = new ResponseTeamUnit(responseTeamOrg, responseCoordinator, responseTeamAgent);
         System.out.println("Network:");
         System.out.println(idrn.getNetworkname());
         System.out.println();
