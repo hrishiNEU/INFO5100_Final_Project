@@ -264,7 +264,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
     }
     private void loginEmergencyOperationCoordinator(String username, String password) {
-        EmergencyOperationCoordinator coordinator = EmergencyOperationCoordinator.findCoordinator(id);
+        EmergencyOperationCoordinator coordinator = EmergencyOperationCoordinator.findCoordinatorByName(username);
 
         if (coordinator != null) {
 
@@ -282,7 +282,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     }
 
     private void loginResourceSpecialist(String username, String password) {
-        ResourceSpecialist specialist = ResourceSpecialist.findSpecialist(id);
+        ResourceSpecialist specialist = ResourceSpecialist.findSpecialistByName(username);
         if (specialist != null) { 
             if(new String(specialist.getPassword()).equals(password)){
                 ResourceSpecialistJPanel panel = new ResourceSpecialistJPanel();
@@ -298,7 +298,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     
 
         private void loginFieldResponseCoordinator(String username, String password) {
-        FieldResponseCoordinator coordinator = FieldResponseCoordinator.findCoordinator(id);
+        FieldResponseCoordinator coordinator = FieldResponseCoordinator.findCoordinatorByName(username);
 
         if (coordinator != null) {
 
@@ -342,7 +342,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
     }
     private void loginLogisticsCoordinator(String username, String password) {
-        LogisticsCoordinator coordinator = LogisticsCoordinator.findCoordinator(id);
+        LogisticsCoordinator coordinator = LogisticsCoordinator.findCoordinatorByName(username);
 
         if (coordinator != null) {
 
@@ -360,7 +360,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     }
 
     private void loginHospitalManager(String username, String password) {
-        HospitalManager manager = HospitalManager.findManager(id);
+        HospitalManager manager = HospitalManager.findManagerByName(username);
         if (manager != null ) {
             if (new String(manager.getPassword()).equals(password)) {
                 HospitalManagerJPanel panel = new HospitalManagerJPanel();
@@ -376,7 +376,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     }
 
     private void loginCitizen(String username, String password) {
-        Citizen citizen = CitizenDirectory.findCitizen(id);
+        Citizen citizen = CitizenDirectory.findCitizenByName(username);
         if (citizen != null) {
 
             if (new String(citizen.getPassword()).equals(password)) {
@@ -393,7 +393,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     }
 
     private void loginVolunteerCoordinator(String username, String password) {
-        VolunteerCoordinator coordinator = VolunteerCoordinator.findCoordinator(id);
+        VolunteerCoordinator coordinator = VolunteerCoordinator.findCoordinatorByName(username);
         if (coordinator != null) {
             if (new String(coordinator.getPassword()).equals(password)) {
                 VolunteerCoordinatorJPanel panel = new VolunteerCoordinatorJPanel();
@@ -410,7 +410,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     }
 
     private void loginResponseTeamAgent(String username, String password) {
-        ResponseTeamAgent agent = ResponseTeamAgent.findTeamAgent(id);
+        ResponseTeamAgent agent = ResponseTeamAgent.findTeamAgentByName(username);
         ArrayList<ResponseTeamAgent> teamAgents = agent.getAllTeamAgents();
 
         if (agent != null) {
@@ -429,7 +429,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     }
 
     private void loginResponseTeamCoordinator(String username, String password) {
-        ResponseTeamCoordinator coordinator = ResponseTeamCoordinator.findCoordinator(id);
+        ResponseTeamCoordinator coordinator = ResponseTeamCoordinator.findCoordinatorByName(username);
 
         if (coordinator != null) {
 

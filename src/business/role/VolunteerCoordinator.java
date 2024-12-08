@@ -43,6 +43,15 @@ public class VolunteerCoordinator extends Citizen {
         return null;
     }
 
+    public static VolunteerCoordinator findCoordinatorByName(String name) {
+        for (VolunteerCoordinator coordinator : coordinators) {
+            if (coordinator.getName().equals(name)) {
+                return coordinator;
+            }
+        }
+        return null;
+    }
+    
     public static ArrayList<VolunteerCoordinator> getAllCoordinators() {
         return coordinators;
     }

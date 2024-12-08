@@ -43,6 +43,15 @@ public class ResponseTeamCoordinator extends Citizen {
         }
         return null;
     }
+    
+        public static ResponseTeamCoordinator findCoordinatorByName(String name) {
+        for (ResponseTeamCoordinator coordinator : coordinators) {
+            if (coordinator.getName().equals(name)) {
+                return coordinator;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<ResponseTeamCoordinator> getAllCoordinators() {
         return coordinators;

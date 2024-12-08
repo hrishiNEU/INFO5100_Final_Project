@@ -43,6 +43,15 @@ public class FieldResponseCoordinator extends Citizen {
         }
         return null;
     }
+    
+        public static FieldResponseCoordinator findCoordinatorByName(String name) {
+        for (FieldResponseCoordinator coordinator : coordinators) {
+            if (coordinator.getName().equals(name)) {
+                return coordinator;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<FieldResponseCoordinator> getAllCoordinators() {
         return coordinators;

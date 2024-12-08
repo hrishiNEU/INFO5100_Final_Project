@@ -41,6 +41,15 @@ public class ResourceSpecialist extends Citizen {
         }
         return null;
     }
+    
+    public static ResourceSpecialist findSpecialistByName(String name) {
+        for (ResourceSpecialist specialist : specialists) {
+            if (specialist.getName().equals(name)) {
+                return specialist;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<ResourceSpecialist> getAllSpecialists() {
         return specialists;

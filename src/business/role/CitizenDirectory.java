@@ -33,6 +33,10 @@ public class CitizenDirectory {
         return citizenMap.get(citizenId);
     }
     
+    public static Citizen findCitizenByName(String name) {
+        return citizenMap.get(name);
+    }
+    
 
     public ArrayList<Citizen> getAllCitizens() {
         return new ArrayList<>(citizenMap.values());

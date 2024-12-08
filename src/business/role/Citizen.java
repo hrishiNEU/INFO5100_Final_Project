@@ -84,5 +84,4 @@ public class Citizen {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-    
 }
