@@ -43,6 +43,8 @@ public class ResponseTeamCoordinatorJPanel extends javax.swing.JPanel {
         btnDecision = new javax.swing.JButton();
         cmbAgent = new javax.swing.JComboBox<>();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         tblResponse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

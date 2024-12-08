@@ -40,6 +40,8 @@ public class LogisticsCoordinatorJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         btnSendReport = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         tblInventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},

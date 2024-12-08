@@ -51,6 +51,8 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
         btnRequest = new javax.swing.JButton();
         btnUpdateFunds = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         tblInventoryReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
