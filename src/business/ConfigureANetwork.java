@@ -4,6 +4,7 @@
  */
 package business;
 
+import java.util.ArrayList;
 import business.enterprise.EnterpriseDirectory;
 import business.organization.CommunityOrganization;
 import business.organization.DamageAssesmentDepartment;
@@ -26,7 +27,6 @@ import business.role.ResourceSpecialist;
 import business.role.ResponseTeamAgent;
 import business.role.ResponseTeamCoordinator;
 import business.role.VolunteerCoordinator;
-import java.util.ArrayList;
 
 /**
  *
@@ -162,67 +162,31 @@ public class ConfigureANetwork {
                 639001.99
         );
 
-        ResponseTeamAgent agent1 = new ResponseTeamAgent(11, "Agent 1", "password123".toCharArray(), "ResponseTeamAgent", "1231111111", "City A", "Country A", "Boston", "Support Evacuation");
-        ResponseTeamAgent agent2 = new ResponseTeamAgent(12, "Agent 2", "password123".toCharArray(), "ResponseTeamAgent", "1232222222", "City B", "Country B", "Boston", "Medical Assistance");
-        ResponseTeamAgent agent3 = new ResponseTeamAgent(13, "Agent 3", "password123".toCharArray(), "ResponseTeamAgent", "1233333333", "City C", "Country C", "Boston", "Coordinate Rescue");
-        ResponseTeamAgent agent4 = new ResponseTeamAgent(14, "Agent 4", "password123".toCharArray(), "ResponseTeamAgent", "1234444444", "City D", "Country D", "Boston", "Search Operations");
-        ResponseTeamAgent agent5 = new ResponseTeamAgent(15, "Agent 5", "password123".toCharArray(), "ResponseTeamAgent", "1235555555", "City E", "Country E", "Boston", "Distribute Supplies");
-        ResponseTeamAgent agent6 = new ResponseTeamAgent(16, "Agent 6", "password123".toCharArray(), "ResponseTeamAgent", "1236666666", "City F", "Country F", "Boston", "Communication Setup");
-        ResponseTeamAgent agent7 = new ResponseTeamAgent(17, "Agent 7", "password123".toCharArray(), "ResponseTeamAgent", "1237777777", "City G", "Country G", "Boston", "Traffic Management");
-        ResponseTeamAgent agent8 = new ResponseTeamAgent(18, "Agent 8", "password123".toCharArray(), "ResponseTeamAgent", "1238888888", "City H", "Country H", "Boston", "Safety Monitoring");
-
-// Add the agents to the ResponseTeamCoordinator
-        ArrayList<ResponseTeamAgent> teamAgents = new ArrayList<>();
-        teamAgents.add(agent1);
-        teamAgents.add(agent2);
-        teamAgents.add(agent3);
-        teamAgents.add(agent4);
-        teamAgents.add(agent5);
-        teamAgents.add(agent6);
-        teamAgents.add(agent7);
-        teamAgents.add(agent8);
-
-// Create a new ResponseTeamCoordinator with the teamAgents
-        ResponseTeamCoordinator newResponseCoordinator = new ResponseTeamCoordinator(
-                19, // Unique ID for the new ResponseTeamCoordinator
-                "New Coordinator",
-                "password123".toCharArray(),
-                "ResponseTeamCoordinator",
-                "9870000000",
-                "Boston",
-                "Country X",
-                "Advanced Response Strategy",
-                teamAgents,
-                "Headquarters"
+        ResponseTeamCoordinator responseCoordinator = new ResponseTeamCoordinator(
+                fernandoAlonso.getCitizenId(),
+                fernandoAlonso.getName(),
+                fernandoAlonso.getPassword(),
+                fernandoAlonso.getType(),
+                fernandoAlonso.getPhone(),
+                fernandoAlonso.getAddress(),
+                fernandoAlonso.getNationality(),
+                "Response Strategy",
+                10,
+                "Boston"
         );
 
-// Update the ResponseTeamUnit
-        
+        ResponseTeamAgent responseTeamAgent = new ResponseTeamAgent(
+                sebastianVettel.getCitizenId(),
+                sebastianVettel.getName(),
+                sebastianVettel.getPassword(),
+                sebastianVettel.getType(),
+                sebastianVettel.getPhone(),
+                sebastianVettel.getAddress(),
+                sebastianVettel.getNationality(),
+                "Boston",
+                "Evacuate Citizens"
+        );
 
-//        ResponseTeamCoordinator responseCoordinator = new ResponseTeamCoordinator(
-//                fernandoAlonso.getCitizenId(),
-//                fernandoAlonso.getName(),
-//                fernandoAlonso.getPassword(),
-//                fernandoAlonso.getType(),
-//                fernandoAlonso.getPhone(),
-//                fernandoAlonso.getAddress(),
-//                fernandoAlonso.getNationality(),
-//                "Response Strategy",
-//                10,
-//                "Boston"
-//        );
-//
-//        ResponseTeamAgent responseTeamAgent = new ResponseTeamAgent(
-//                sebastianVettel.getCitizenId(),
-//                sebastianVettel.getName(),
-//                sebastianVettel.getPassword(),
-//                sebastianVettel.getType(),
-//                sebastianVettel.getPhone(),
-//                sebastianVettel.getAddress(),
-//                sebastianVettel.getNationality(),
-//                "Boston",
-//                "Evacuate Citizens"
-//        );
         Organization communityOrg = organizationDirectory4.newOrganization(0, "Community Helpers", "123 Main Street", "Springfield", "Illinois", "USA");
         Organization emergencyOperationsOrg = organizationDirectory1.newOrganization(1, "Emergency Operations Center",
                 "456 Elm Street",
@@ -348,12 +312,6 @@ public class ConfigureANetwork {
                 + healthCare.getHos().getName()
                 + " (Citizen ID: " + healthCare.getHos().getCitizenId() + ")");
         System.out.println("Response Team Unit");
-//        System.out.println("Role: Response Team Coordinator - "
-//                + responseUnit.getRtc().getName()
-//                + " (Citizen ID: " + responseUnit.getRtc().getCitizenId() + ")");
-//        System.out.println("Role: Response Team Agent - "
-//                + responseUnit.getRta().getName()
-//                + " (Citizen ID: " + responseUnit.getRta().getCitizenId() + ")");
 
         return idrn;
 
