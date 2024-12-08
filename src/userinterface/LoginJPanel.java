@@ -271,11 +271,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     }
 
     private void loginResourceSpecialist(String username, String password) {
-<<<<<<< HEAD
-        ResourceSpecialist specialist = ResourceSpecialist.findSpecialist();
-=======
         ResourceSpecialist specialist = ResourceSpecialist.findSpecialistByName(username);
->>>>>>> 59c5cf9fe150a653f5526d1a09c3c1094e494dac
         if (specialist != null) { 
             if(new String(specialist.getPassword()).equals(password)){
                 ResourceSpecialistJPanel panel = new ResourceSpecialistJPanel();
