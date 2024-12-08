@@ -47,6 +47,8 @@ public class CitizenJPanel extends javax.swing.JPanel {
         btnVolunteerSignup = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         txtNewsFlash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNewsFlashActionPerformed(evt);

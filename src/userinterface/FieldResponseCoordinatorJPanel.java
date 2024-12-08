@@ -42,6 +42,8 @@ public class FieldResponseCoordinatorJPanel extends javax.swing.JPanel {
         tblAllocateFunds = new javax.swing.JTable();
         btnSendFunds = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         tblDamageReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},

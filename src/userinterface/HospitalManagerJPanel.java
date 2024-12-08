@@ -41,6 +41,8 @@ public class HospitalManagerJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAdmit = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         tblPatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

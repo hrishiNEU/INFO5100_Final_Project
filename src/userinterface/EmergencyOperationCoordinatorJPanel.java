@@ -45,6 +45,8 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
         btnTrigger = new javax.swing.JButton();
         btnStopTrigger = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         jLabel1.setText("Select Disaster Type:");
 
         cmbDisaster.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Earthquake" ,"Flood", "Fire", "Tornado"}));

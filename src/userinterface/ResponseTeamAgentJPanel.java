@@ -40,6 +40,8 @@ public class ResponseTeamAgentJPanel extends javax.swing.JPanel {
         tblAgent = new javax.swing.JTable();
         cmbAgent = new javax.swing.JComboBox<>();
 
+        setMaximumSize(new java.awt.Dimension(1000, 1000));
+
         tblAgent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},

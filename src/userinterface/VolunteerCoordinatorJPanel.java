@@ -36,6 +36,8 @@ public class VolunteerCoordinatorJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVolunteers = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
         tblVolunteers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
