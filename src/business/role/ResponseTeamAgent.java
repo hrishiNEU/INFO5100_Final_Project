@@ -39,6 +39,15 @@ public class ResponseTeamAgent extends Citizen {
         }
         return null;
     }
+    
+    public static ResponseTeamAgent findTeamAgentByName(String name) {
+        for (ResponseTeamAgent agent : teamAgents) {
+            if (agent.getName().equals(name)) {
+                return agent;
+            }
+        }
+        return null;
+    }
 
     public static ResponseTeamAgent searchByName(String name) {
         for (ResponseTeamAgent agent : teamAgents) {

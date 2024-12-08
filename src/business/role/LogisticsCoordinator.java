@@ -39,6 +39,15 @@ public class LogisticsCoordinator extends Citizen {
         }
         return null;
     }
+    
+    public static LogisticsCoordinator findCoordinatorByName(String name) {
+        for (LogisticsCoordinator coordinator : coordinators) {
+            if (coordinator.getName().equals(name)) {
+                return coordinator;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<LogisticsCoordinator> getAllCoordinators() {
         return coordinators;

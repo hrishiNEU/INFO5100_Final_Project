@@ -41,6 +41,15 @@ public class HospitalManager extends Citizen {
         }
         return null;
     }
+    
+    public static HospitalManager findManagerByName(String name) {
+        for (HospitalManager manager : managers) {
+            if (manager.getName().equals(name)) {
+                return manager;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<HospitalManager> getAllManagers() {
         return managers;

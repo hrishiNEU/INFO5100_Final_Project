@@ -50,6 +50,15 @@ public class EmergencyOperationCoordinator extends Citizen {
         }
         return null;
     }
+    
+    public static EmergencyOperationCoordinator findCoordinatorByName(String name) {
+        for (EmergencyOperationCoordinator coordinator : coordinators) {
+            if (coordinator.getName().equals(name)) {
+                return coordinator;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<EmergencyOperationCoordinator> getAllCoordinators() {
         return coordinators;
