@@ -255,8 +255,8 @@ public class ConfigureANetwork {
         HealthCareInstitution healthCare = new HealthCareInstitution(healthOrg, hospitalManager);
         LogisticsSupplyChainUnit logisiticsSupplyChain = new LogisticsSupplyChainUnit(logisticsOrg, logisticsCoordinator);
         ResourceManagementDivision resourceDiv = new ResourceManagementDivision(resourceMngOrg, resourceSpecialist);
-        ResponseTeamUnit responseUnit = new ResponseTeamUnit(responseTeamOrg, responseCoordinator, responseTeamAgent);
 
+        ResponseTeamUnit responseUnit = new ResponseTeamUnit(responseTeamOrg, responseCoordinator, responseTeamAgent);
         System.out.println("Network:");
         System.out.println(idrn.getNetworkname());
         System.out.println();
@@ -311,12 +311,6 @@ public class ConfigureANetwork {
                 + healthCare.getHos().getName()
                 + " (Citizen ID: " + healthCare.getHos().getCitizenId() + ")");
         System.out.println("Response Team Unit");
-        System.out.println("Role: Response Team Coordinator - "
-                + responseUnit.getRtc().getName()
-                + " (Citizen ID: " + responseUnit.getRtc().getCitizenId() + ")");
-        System.out.println("Role: Response Team Agent - "
-                + responseUnit.getRta().getName()
-                + " (Citizen ID: " + responseUnit.getRta().getCitizenId() + ")");
 
         return idrn;
 
