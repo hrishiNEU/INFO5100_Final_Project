@@ -4,8 +4,11 @@
  */
 package userinterface;
 
+import business.role.EmergencyOperationCoordinator;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
  * @author abhis
  */
 public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
-
     /**
      * Creates new form EmergencyOperationCoordinatorJPanel
      */
@@ -41,6 +43,7 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
         tblEmergency = new javax.swing.JTable();
         jProgressBar1 = new javax.swing.JProgressBar();
         btnTrigger = new javax.swing.JButton();
+        btnStopTrigger = new javax.swing.JButton();
 
         jLabel1.setText("Select Disaster Type:");
 
@@ -81,6 +84,13 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnStopTrigger.setText("Stop Alert");
+        btnStopTrigger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStopTriggerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,21 +99,24 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
-                    .addComponent(btnTrigger)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnTrigger)
+                        .addGap(78, 78, 78)
+                        .addComponent(btnStopTrigger)
+                        .addGap(92, 92, 92))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtLocation)
-                                .addComponent(txtSeverity)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(cmbDisaster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLocation)
+                            .addComponent(txtSeverity)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbDisaster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,7 +139,9 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
-                .addComponent(btnTrigger)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTrigger)
+                    .addComponent(btnStopTrigger))
                 .addContainerGap(171, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -146,8 +161,16 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
          triggerDisasterAlert();
     }//GEN-LAST:event_btnTriggerActionPerformed
 
+    private void btnStopTriggerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopTriggerActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,"Alerts Retracted");
+        EmergencyOperationCoordinator emergencycoordinator = EmergencyOperationCoordinator.findCoordinator(3);
+        emergencycoordinator.setAlert("You are Safe.");
+    }//GEN-LAST:event_btnStopTriggerActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnStopTrigger;
     private javax.swing.JButton btnTrigger;
     private javax.swing.JComboBox<String> cmbDisaster;
     private javax.swing.JLabel jLabel1;
@@ -194,9 +217,13 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
 
         // Log the disaster alert
         System.out.println("Disaster Alert Triggered!");
-        System.out.println("Type: " + disasterType);
-        System.out.println("Location: " + location);
-        System.out.println("Severity: " + severity);
+        
+        EmergencyOperationCoordinator emergencycoordinator = EmergencyOperationCoordinator.findCoordinator(3);
+        emergencycoordinator.setAlert( severity + disasterType +" occured in "+ location+" .Seek shelter and help");
+
+        JOptionPane.showMessageDialog(null,"News Flash sent to all the Citizens");
+        
+        
     }
 
     private void updateAffectedAreas(String disasterType, String location) {
@@ -208,6 +235,5 @@ public class EmergencyOperationCoordinatorJPanel extends javax.swing.JPanel {
         model.addRow(new Object[] { "Area 2", "Alerted", "300", "Medium" });
         model.addRow(new Object[] { "Area 3", "Safe", "150", "Low" });
     }
-
 
 }

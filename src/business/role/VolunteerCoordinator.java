@@ -5,14 +5,14 @@ package business.role;
 
  /*
  * @author abhis
- */
-import java.util.ArrayList;
+ */import java.util.ArrayList;
 
 public class VolunteerCoordinator extends Citizen {
 
     private String volunteerTeam;
     private int teamSize;
     private String operationArea;
+    private ArrayList<Citizen> volunteers; // List of volunteers managed by the coordinator
 
     private static ArrayList<VolunteerCoordinator> coordinators = new ArrayList<>();
 
@@ -23,6 +23,7 @@ public class VolunteerCoordinator extends Citizen {
         this.volunteerTeam = volunteerTeam;
         this.teamSize = teamSize;
         this.operationArea = operationArea;
+        this.volunteers = new ArrayList<>(); // Initialize the volunteers list
         coordinators.add(this);
     }
 
@@ -74,6 +75,38 @@ public class VolunteerCoordinator extends Citizen {
         System.out.println("Coordinating volunteer efforts for team: " + volunteerTeam + " in area: " + operationArea);
     }
 
+    // Methods for managing volunteers
+    public void addVolunteer(Citizen volunteer) {
+        this.volunteers.add(volunteer);
+        System.out.println("Volunteer added: " + volunteer.getName());
+    }
+
+    public boolean removeVolunteer(int volunteerId) {
+        for (Citizen volunteer : volunteers) {
+            if (volunteer.getCitizenId() == volunteerId) {
+                volunteers.remove(volunteer);
+                System.out.println("Volunteer removed: " + volunteer.getName());
+                return true;
+            }
+        }
+        System.out.println("Volunteer with ID " + volunteerId + " not found.");
+        return false;
+    }
+
+    public Citizen findVolunteer(int volunteerId) {
+        for (Citizen volunteer : volunteers) {
+            if (volunteer.getCitizenId() == volunteerId) {
+                return volunteer;
+            }
+        }
+        System.out.println("Volunteer with ID " + volunteerId + " not found.");
+        return null;
+    }
+
+    public ArrayList<Citizen> getAllVolunteers() {
+        return new ArrayList<>(volunteers); // Return a copy to avoid direct modifications
+    }
+
     @Override
     public String toString() {
         return "VolunteerCoordinator { " +
@@ -85,6 +118,7 @@ public class VolunteerCoordinator extends Citizen {
                ", VolunteerTeam='" + volunteerTeam + '\'' +
                ", TeamSize=" + teamSize +
                ", OperationArea='" + operationArea + '\'' +
+               ", Volunteers=" + volunteers.size() + // Show number of volunteers
                " }";
     }
 }

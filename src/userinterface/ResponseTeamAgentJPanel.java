@@ -23,8 +23,8 @@ public class ResponseTeamAgentJPanel extends javax.swing.JPanel {
      */
     public ResponseTeamAgentJPanel(ArrayList<ResponseTeamAgent> teamAgents) {
         initComponents();
-        populateAgentsCombo();
         this.teamAgents = teamAgents;
+        populateAgentsCombo();
     }
 
     /**

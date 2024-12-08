@@ -8,6 +8,7 @@ import business.Network;
 import business.enterprise.Enterprise;
 import business.organization.Organization;
 import business.role.Citizen;
+import business.role.CitizenDirectory;
 import business.role.DamageAnalyst;
 import business.role.EmergencyOperationCoordinator;
 import business.role.FieldResponseCoordinator;
@@ -207,7 +208,8 @@ public class LoginJPanel extends javax.swing.JPanel {
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         String password = String.valueOf(passwordpwd.getPassword());
         String role = comboSelected.getSelectedItem().toString();
-        int id = Integer.parseInt(useridtxt.getText());
+        //int id = Integer.parseInt(useridtxt.getText());
+
         String username = useridtxt.getText();
         
         switch (role.toLowerCase()) {
@@ -215,34 +217,34 @@ public class LoginJPanel extends javax.swing.JPanel {
                 loginSystemAdministrator(username, password);
                 break;
             case "emergency operation coordinator":
-                loginEmergencyOperationCoordinator(id, password);
+                loginEmergencyOperationCoordinator(username, password);
                 break;
             case "resource specialist":
-                loginResourceSpecialist(id, password);
+                loginResourceSpecialist(username, password);
                 break;
             case "field response coordinator":
-                loginFieldResponseCoordinator(id, password);
+                loginFieldResponseCoordinator(username, password);
                 break;
             case "damage analyst":
-                loginDamageAnalyst(id, password);
+                loginDamageAnalyst(username, password);
                 break;
             case "logistics coordinator":
-                loginLogisticsCoordinator(id, password);
+                loginLogisticsCoordinator(username, password);
                 break;
             case "hospital manager":
-                loginHospitalManager(id, password);
+                loginHospitalManager(username, password);
                 break;
             case "citizen":
-                loginCitizen(id, password);
+                loginCitizen(username, password);
                 break;
             case "volunteer coordinator":
-                loginVolunteerCoordinator(id, password);
+                loginVolunteerCoordinator(username, password);
                 break;
             case "response team agent":
-                loginResponseTeamAgent(id, password);
+                loginResponseTeamAgent(username, password);
                 break;
             case "response team coordinator":
-                loginResponseTeamCoordinator(id, password);
+                loginResponseTeamCoordinator(username, password);
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Invalid role selected!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -261,7 +263,7 @@ public class LoginJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Incorrect credentials for System Administrator", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
-    private void loginEmergencyOperationCoordinator(int id, String password) {
+    private void loginEmergencyOperationCoordinator(String username, String password) {
         EmergencyOperationCoordinator coordinator = EmergencyOperationCoordinator.findCoordinator(id);
 
         if (coordinator != null) {
@@ -279,7 +281,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void loginResourceSpecialist(int id, String password) {
+    private void loginResourceSpecialist(String username, String password) {
         ResourceSpecialist specialist = ResourceSpecialist.findSpecialist(id);
         if (specialist != null) { 
             if(new String(specialist.getPassword()).equals(password)){
@@ -295,7 +297,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     
 
-        private void loginFieldResponseCoordinator(int id, String password) {
+        private void loginFieldResponseCoordinator(String username, String password) {
         FieldResponseCoordinator coordinator = FieldResponseCoordinator.findCoordinator(id);
 
         if (coordinator != null) {
@@ -319,8 +321,8 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     
 
-    private void loginDamageAnalyst(int id, String password) {
-        DamageAnalyst analyst = DamageAnalyst.findDamageAnalyst(id);
+    private void loginDamageAnalyst(String username, String password) {
+        DamageAnalyst analyst = DamageAnalyst.findDamageAnalystByName(username);
 
         if (analyst != null) {
 
@@ -339,7 +341,7 @@ public class LoginJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
-    private void loginLogisticsCoordinator(int id, String password) {
+    private void loginLogisticsCoordinator(String username, String password) {
         LogisticsCoordinator coordinator = LogisticsCoordinator.findCoordinator(id);
 
         if (coordinator != null) {
@@ -357,39 +359,60 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void loginHospitalManager(int id, String password) {
+    private void loginHospitalManager(String username, String password) {
         HospitalManager manager = HospitalManager.findManager(id);
-        if (manager != null && manager.getPassword().equals(password)) {
-            // Navigate to Hospital Manager panel
+        if (manager != null ) {
+            if (new String(manager.getPassword()).equals(password)) {
+                HospitalManagerJPanel panel = new HospitalManagerJPanel();
+                workArea.add("HospitalManagerJPanel", panel);
+                CardLayout layout = (CardLayout) workArea.getLayout();
+                layout.next(workArea);
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Hospital Manager", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect credentials for Hospital Manager", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
-    private void loginCitizen(int id, String password) {
-        Citizen citizen = network.getCitizendirectory().findCitizen(id);
-        if (citizen != null && citizen.getPassword().equals(password)) {
-            // Navigate to Citizen panel
+    private void loginCitizen(String username, String password) {
+        Citizen citizen = CitizenDirectory.findCitizen(id);
+        if (citizen != null) {
+
+            if (new String(citizen.getPassword()).equals(password)) {
+                CitizenJPanel panel = new CitizenJPanel(citizen);
+                workArea.add("CitizenJPanel", panel);
+                CardLayout layout = (CardLayout) workArea.getLayout();
+                layout.next(workArea);
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Damage Analyst", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Incorrect credentials for Citizen", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
-    private void loginVolunteerCoordinator(int id, String password) {
+    private void loginVolunteerCoordinator(String username, String password) {
         VolunteerCoordinator coordinator = VolunteerCoordinator.findCoordinator(id);
-        if (coordinator != null && coordinator.getPassword().equals(password)) {
+        if (coordinator != null) {
+            if (new String(coordinator.getPassword()).equals(password)) {
+                VolunteerCoordinatorJPanel panel = new VolunteerCoordinatorJPanel();
+                workArea.add("VolunteerCoordinatorJPanel", panel);
+                CardLayout layout = (CardLayout) workArea.getLayout();
+                layout.next(workArea);
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Volunteer Coordinator", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
             // Navigate to Volunteer Coordinator panel
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect credentials for Volunteer Coordinator", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
-    private void loginResponseTeamAgent(int id, String password) {
+    private void loginResponseTeamAgent(String username, String password) {
         ResponseTeamAgent agent = ResponseTeamAgent.findTeamAgent(id);
         ArrayList<ResponseTeamAgent> teamAgents = agent.getAllTeamAgents();
-     
-        
-        
+
         if (agent != null) {
 
             if (new String(agent.getPassword()).equals(password)) {
@@ -405,7 +428,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void loginResponseTeamCoordinator(int id, String password) {
+    private void loginResponseTeamCoordinator(String username, String password) {
         ResponseTeamCoordinator coordinator = ResponseTeamCoordinator.findCoordinator(id);
 
         if (coordinator != null) {

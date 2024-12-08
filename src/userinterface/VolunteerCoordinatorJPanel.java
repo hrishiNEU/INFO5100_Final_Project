@@ -4,17 +4,24 @@
  */
 package userinterface;
 
+import business.role.Citizen;
+import business.role.VolunteerCoordinator;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author abhis
  */
 public class VolunteerCoordinatorJPanel extends javax.swing.JPanel {
 
+    VolunteerCoordinator coordinator = VolunteerCoordinator.findCoordinator(1);
     /**
      * Creates new form VolunteerCoordinatorJPanel
      */
     public VolunteerCoordinatorJPanel() {
         initComponents();
+        populateTable();
     }
 
     /**
@@ -26,19 +33,65 @@ public class VolunteerCoordinatorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVolunteers = new javax.swing.JTable();
+
+        tblVolunteers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name", "Area", "Nationality"
+            }
+        ));
+        jScrollPane1.setViewportView(tblVolunteers);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(311, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblVolunteers;
     // End of variables declaration//GEN-END:variables
+    
+    private void populateTable() {
+    DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblVolunteers.getModel();
+    // Clear existing rows in the table
+    model.setRowCount(0);
+
+    if (coordinator != null) {
+        // Retrieve the list of volunteers
+        ArrayList<Citizen> volunteers = coordinator.getAllVolunteers();
+
+        // Populate the table with volunteer data
+        for (Citizen volunteer : volunteers) {
+            Object[] row = new Object[4];
+            row[0] = volunteer.getCitizenId();   // Volunteer ID
+            row[1] = volunteer.getName();       // Volunteer Name
+            row[2] = coordinator.getOperationArea(); // Operation Area
+            row[3] = volunteer.getNationality(); // Nationality
+
+            model.addRow(row);
+        }
+    } else {
+        System.err.println("Coordinator not found!");
+    }
+}
+
 }

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CitizenDirectory {
-    private Map<Integer, Citizen> citizenMap; 
+    private static Map<Integer, Citizen> citizenMap; 
     public CitizenDirectory() {
         this.citizenMap = new HashMap<>();
     }
@@ -29,7 +29,7 @@ public class CitizenDirectory {
     }
     
    
-    public Citizen findCitizen(int citizenId) {
+    public static Citizen findCitizen(int citizenId) {
         return citizenMap.get(citizenId);
     }
     

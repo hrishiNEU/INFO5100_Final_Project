@@ -13,6 +13,15 @@ public class EmergencyOperationCoordinator extends Citizen {
     private String responsibilityArea;
     private String communicationSystem;
     private int yearsOfExperience;
+    private String alert;
+
+    public String getAlert() {
+        return alert;
+    }
+
+    public void setAlert(String alert) {
+        this.alert = alert;
+    }
 
     private static ArrayList<EmergencyOperationCoordinator> coordinators = new ArrayList<>();
 

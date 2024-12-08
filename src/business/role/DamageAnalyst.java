@@ -41,6 +41,15 @@ public class DamageAnalyst extends Citizen {
         }
         return null;
     }
+    
+    public static DamageAnalyst findDamageAnalystByName(String username){
+        for (DamageAnalyst da : damageAnalysts) {
+            if (da.getName().equalsIgnoreCase(username)) {
+                return da;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<DamageAnalyst> getAllDamageAnalysts() {
         return damageAnalysts;

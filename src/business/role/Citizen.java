@@ -18,7 +18,7 @@ public class Citizen {
     public String address;  
     public String nationality; 
     public Network network;
-   
+
     public Citizen(int citizenId, String name, char[] password, String type, String phone, String address, String nationality) {
         this.citizenId = citizenId;
         this.name = name;

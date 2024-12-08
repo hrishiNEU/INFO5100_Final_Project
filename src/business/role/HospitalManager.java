@@ -3,6 +3,7 @@
  */
 package business.role;
 
+
 import java.util.ArrayList;
 
 public class HospitalManager extends Citizen {
@@ -10,6 +11,7 @@ public class HospitalManager extends Citizen {
     private String managedHospital;
     private int numberOfStaff;
     private String hospitalPolicy;
+    private ArrayList<Citizen> patients;
 
     private static ArrayList<HospitalManager> managers = new ArrayList<>();
 
@@ -20,6 +22,7 @@ public class HospitalManager extends Citizen {
         this.managedHospital = managedHospital;
         this.numberOfStaff = numberOfStaff;
         this.hospitalPolicy = hospitalPolicy;
+        this.patients = new ArrayList<>(); // Initialize the patients list
         managers.add(this);
     }
 
@@ -67,7 +70,39 @@ public class HospitalManager extends Citizen {
         this.hospitalPolicy = hospitalPolicy;
     }
 
+    public void addPatient(Citizen patient) {
+        this.patients.add(patient);
+        System.out.println("Patient added: " + patient.getName());
+    }
+
+    public boolean removePatient(int patientId) {
+        for (Citizen patient : patients) {
+            if (patient.getCitizenId() == patientId) {
+                patients.remove(patient);
+                System.out.println("Patient removed: " + patient.getName());
+                return true;
+            }
+        }
+        System.out.println("Patient with ID " + patientId + " not found.");
+        return false;
+    }
+
+    public Citizen findPatient(int patientId) {
+        for (Citizen patient : patients) {
+            if (patient.getCitizenId() == patientId) {
+                return patient;
+            }
+        }
+        System.out.println("Patient with ID " + patientId + " not found.");
+        return null;
+    }
+
+    public ArrayList<Citizen> getAllPatients() {
+        return new ArrayList<>(patients); 
+    }
+
     public void admitPatientToHospital(Citizen patient) {
+        addPatient(patient);
         System.out.println("Admitting patient: " + patient.getName() + " to the hospital managed by " + managedHospital);
     }
 
@@ -82,6 +117,7 @@ public class HospitalManager extends Citizen {
                ", ManagedHospital='" + managedHospital + '\'' +
                ", NumberOfStaff=" + numberOfStaff +
                ", HospitalPolicy='" + hospitalPolicy + '\'' +
+               ", Patients=" + patients.size() + 
                " }";
     }
 }

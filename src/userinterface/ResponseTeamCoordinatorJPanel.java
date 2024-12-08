@@ -45,10 +45,7 @@ public class ResponseTeamCoordinatorJPanel extends javax.swing.JPanel {
 
         tblResponse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Area", "Agent", "Task"

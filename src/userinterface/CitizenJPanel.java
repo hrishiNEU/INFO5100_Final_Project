@@ -4,19 +4,35 @@
  */
 package userinterface;
 
+import business.role.Citizen;
+import business.role.EmergencyOperationCoordinator;
+import business.role.HospitalManager;
+import business.role.VolunteerCoordinator;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author abhis
  */
 public class CitizenJPanel extends javax.swing.JPanel {
-
+    String newsflashtext;
+    Citizen volunteer;
     /**
      * Creates new form CitizenJPanel
      */
-    public CitizenJPanel() {
+    public CitizenJPanel(Citizen citizen) {
         initComponents();
+        populateAlert();
+        this.volunteer = citizen;
+        
     }
-
+    
+    public void populateAlert(){
+        EmergencyOperationCoordinator emergencycoordinator = EmergencyOperationCoordinator.findCoordinator(3);
+        newsflashtext = emergencycoordinator.getAlert();
+        txtNewsFlash.setText(newsflashtext);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +42,113 @@ public class CitizenJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtNewsFlash = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnVolunteerSignup = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
+
+        txtNewsFlash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewsFlashActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("News Flash");
+
+        btnVolunteerSignup.setText("Register As a Volunteer");
+        btnVolunteerSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolunteerSignupActionPerformed(evt);
+            }
+        });
+
+        btnHelp.setText("Register As a Patient");
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNewsFlash, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnVolunteerSignup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNewsFlash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(btnVolunteerSignup)
+                .addGap(42, 42, 42)
+                .addComponent(btnHelp)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNewsFlashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewsFlashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewsFlashActionPerformed
+
+    private void btnVolunteerSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolunteerSignupActionPerformed
+        // TODO add your handling code here:
+        VolunteerCoordinator coordinator =VolunteerCoordinator.findCoordinator(1);
+        
+        if (coordinator != null) {
+  
+
+        coordinator.addVolunteer(volunteer);
+        System.out.println("New volunteer signed up: " + volunteer.getName());
+
+        JOptionPane.showMessageDialog(this, "Volunteer signed up successfully!");
+    } else {
+        System.err.println("Coordinator not found!");
+        JOptionPane.showMessageDialog(this, "Error: Coordinator not found!");
+    }
+        
+
+    }//GEN-LAST:event_btnVolunteerSignupActionPerformed
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        // TODO add your handling code here:
+        HospitalManager manager = HospitalManager.findManager(5);
+        
+        if (manager != null) {
+  
+
+        manager.addPatient(volunteer);
+        System.out.println("Patient Registered " + volunteer.getName());
+
+        JOptionPane.showMessageDialog(this, "Patient signed up successfully!");
+    } else {
+        System.err.println("Manager not found!");
+       JOptionPane.showMessageDialog(this, "Error: Manager not found!");
+    }
+        
+        
+    }//GEN-LAST:event_btnHelpActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHelp;
+    private javax.swing.JButton btnVolunteerSignup;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField txtNewsFlash;
     // End of variables declaration//GEN-END:variables
+
+
 }
