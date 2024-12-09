@@ -6,6 +6,7 @@ package userinterface;
 
 import business.ConfigureANetwork;
 import business.Network;
+import business.enterprise.EnterpriseDirectory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ import javax.swing.JLabel;
 public class MainJFrame extends javax.swing.JFrame {
 
     Network network;
+    EnterpriseDirectory enterpriseDirectory;
     /**
      * Creates new form MainJFrame
      */
@@ -69,7 +71,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
     
-        LoginJPanel loginPanel = new LoginJPanel(this, network);
+        LoginJPanel loginPanel = new LoginJPanel(this, network,enterpriseDirectory);
 
         this.setContentPane(loginPanel);
         this.revalidate();

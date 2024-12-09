@@ -5,6 +5,7 @@
 package userinterface;
 
 import business.Network;
+import business.enterprise.EnterpriseDirectory;
 import business.role.Citizen;
 import business.role.CitizenDirectory;
 import business.role.DamageAnalyst;
@@ -32,12 +33,14 @@ public class LoginJPanel extends javax.swing.JPanel {
      */
     
     Network network;
+    EnterpriseDirectory enterpriseDirectory;
     MainJFrame mainPanel;
     
-    public LoginJPanel(MainJFrame mainPanel,Network network) {
+    public LoginJPanel(MainJFrame mainPanel,Network network, EnterpriseDirectory enterpriseDirectory) {
         initComponents();
         this.mainPanel = mainPanel;
         this.network = network;
+        this.enterpriseDirectory = enterpriseDirectory;
         workArea.setLayout(new CardLayout()); 
     }
 
@@ -112,7 +115,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         comboSelected.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         comboSelected.setForeground(new java.awt.Color(0, 0, 153));
-        comboSelected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrartor", "Citizen", "Damage Analyst", "Emergency Operation Coordinator", "Field Response Coordinator", "Hospital Manager", "Logistics Coordinator", "Resource Specialist", "Response Team Agent", "Response Team Coordinator", "Volunteer Coordinator"}));
+        comboSelected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Citizen", "Damage Analyst", "Emergency Operation Coordinator", "Field Response Coordinator", "Hospital Manager", "Logistics Coordinator", "Resource Specialist", "Response Team Agent", "Response Team Coordinator", "Volunteer Coordinator"}));
         comboSelected.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboSelectedActionPerformed(evt);
@@ -200,7 +203,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         String username = useridtxt.getText();
         
         switch (role.toLowerCase()) {
-            case "system administrator":
+            case "administrator":
                 loginSystemAdministrator(username, password);
                 break;
             case "emergency operation coordinator":
@@ -241,14 +244,13 @@ public class LoginJPanel extends javax.swing.JPanel {
     private void loginSystemAdministrator(String username, String password) {
         SystemAdmin admin = SystemAdmin.getInstance();
         if (admin.getAdminName().equals(username) && admin.getAdminPassword().equals(password)) {
-            // Login successful, navigate to the System Administrator panel
-            // AdminJPanel panel = new AdminJPanel(homeJPanel, business);
-            // homeJPanel.add("AdminJPanel", panel);
-            // CardLayout layout = (CardLayout) homeJPanel.getLayout();
-            // layout.next(homeJPanel);
+             SystemAdminJPanel panel = new SystemAdminJPanel();
+             workArea.add("SystemAdminJPanel", panel);
+             CardLayout layout = (CardLayout) workArea.getLayout();
+             layout.next(workArea);
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect credentials for System Administrator", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+        } 
     }
     private void loginEmergencyOperationCoordinator(String username, String password) {
         EmergencyOperationCoordinator coordinator = EmergencyOperationCoordinator.findCoordinatorByName(username);
@@ -261,10 +263,10 @@ public class LoginJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect credentials for Damage Analyst", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Emergency Operations Coordinator", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Emergency Operations Coordinator not found", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 

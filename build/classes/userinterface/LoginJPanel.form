@@ -173,7 +173,7 @@
                   <Color blue="99" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Administrartor&quot;, &quot;Citizen&quot;, &quot;Damage Analyst&quot;, &quot;Emergency Operation Coordinator&quot;, &quot;Field Response Coordinator&quot;, &quot;Hospital Manager&quot;, &quot;Logistics Coordinator&quot;, &quot;Resource Specialist&quot;, &quot;Response Team Agent&quot;, &quot;Response Team Coordinator&quot;, &quot;Volunteer Coordinator&quot;})" type="code"/>
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Administrator&quot;, &quot;Citizen&quot;, &quot;Damage Analyst&quot;, &quot;Emergency Operation Coordinator&quot;, &quot;Field Response Coordinator&quot;, &quot;Hospital Manager&quot;, &quot;Logistics Coordinator&quot;, &quot;Resource Specialist&quot;, &quot;Response Team Agent&quot;, &quot;Response Team Coordinator&quot;, &quot;Volunteer Coordinator&quot;})" type="code"/>
                 </Property>
               </Properties>
               <Events>
