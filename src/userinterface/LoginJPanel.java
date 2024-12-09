@@ -67,12 +67,12 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         splitPane.setDividerLocation(350);
 
-        leftPanel.setBackground(java.awt.SystemColor.activeCaption);
+        leftPanel.setBackground(new java.awt.Color(153, 204, 255));
         leftPanel.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         useridlbl.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         useridlbl.setForeground(new java.awt.Color(0, 0, 153));
-        useridlbl.setText("ID/Type:");
+        useridlbl.setText("User Name");
 
         passwordlbl.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         passwordlbl.setForeground(new java.awt.Color(0, 0, 153));
@@ -92,7 +92,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         CheckBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         CheckBox.setForeground(new java.awt.Color(0, 0, 153));
-        CheckBox.setText(" show password ");
+        CheckBox.setText(" Show password ");
         CheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckBoxActionPerformed(evt);
@@ -141,9 +141,9 @@ public class LoginJPanel extends javax.swing.JPanel {
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(137, 137, 137)
+                .addGap(143, 143, 143)
                 .addComponent(useridlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(useridtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(passwordlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,16 +151,18 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addComponent(passwordpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CheckBox)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(useridlbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(loginbtn))
+                .addGap(18, 18, 18)
+                .addComponent(loginbtn)
+                .addContainerGap())
         );
 
         splitPane.setLeftComponent(leftPanel);
 
+        workArea.setBackground(new java.awt.Color(204, 255, 255));
         workArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         splitPane.setRightComponent(workArea);
 

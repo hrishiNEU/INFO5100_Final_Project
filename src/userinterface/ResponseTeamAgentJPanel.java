@@ -39,8 +39,11 @@ public class ResponseTeamAgentJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgent = new javax.swing.JTable();
         cmbAgent = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 255, 255));
         setMaximumSize(new java.awt.Dimension(1000, 1000));
+        setPreferredSize(new java.awt.Dimension(1000, 750));
 
         tblAgent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,6 +58,7 @@ public class ResponseTeamAgentJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblAgent);
 
+        cmbAgent.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         cmbAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,25 +66,31 @@ public class ResponseTeamAgentJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        jLabel1.setText("Agent's  To-do List:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(134, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(449, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(107, 107, 107)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
                 .addComponent(cmbAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(645, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -105,6 +115,7 @@ public class ResponseTeamAgentJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbAgent;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAgent;
     // End of variables declaration//GEN-END:variables

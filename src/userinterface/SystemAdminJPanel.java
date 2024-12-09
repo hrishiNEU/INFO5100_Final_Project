@@ -50,6 +50,11 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         txtEnterprise = new javax.swing.JTextField();
         txtOrganizations = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
+        btnAddEnterprise.setBackground(new java.awt.Color(0, 0, 156));
+        btnAddEnterprise.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnAddEnterprise.setForeground(new java.awt.Color(255, 255, 255));
         btnAddEnterprise.setText("Add");
         btnAddEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,11 +67,14 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Enterprise"
+                "Enterprise Table"
             }
         ));
         jScrollPane1.setViewportView(tblEnterprise);
 
+        btnDeleteEnterprise.setBackground(new java.awt.Color(0, 0, 156));
+        btnDeleteEnterprise.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnDeleteEnterprise.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteEnterprise.setText("Delete");
         btnDeleteEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,11 +87,12 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Organizations"
+                "Organizations Table"
             }
         ));
         jScrollPane2.setViewportView(tblOrganizations);
 
+        cmbEnterprises.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         cmbEnterprises.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbEnterprises.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +100,9 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAddOrg.setBackground(new java.awt.Color(0, 0, 156));
+        btnAddOrg.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnAddOrg.setForeground(new java.awt.Color(255, 255, 255));
         btnAddOrg.setText("Add");
         btnAddOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +110,9 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDeleteOrg.setBackground(new java.awt.Color(0, 0, 156));
+        btnDeleteOrg.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnDeleteOrg.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteOrg.setText("Delete");
         btnDeleteOrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +125,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmbEnterprises, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -120,7 +135,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
                             .addComponent(txtEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDeleteEnterprise))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnAddOrg)
@@ -129,28 +144,28 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDeleteOrg))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddEnterprise)
                     .addComponent(btnDeleteEnterprise)
                     .addComponent(txtEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
                 .addComponent(cmbEnterprises, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddOrg)
                     .addComponent(btnDeleteOrg)
                     .addComponent(txtOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

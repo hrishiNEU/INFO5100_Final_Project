@@ -50,8 +50,11 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
         txtFunds = new javax.swing.JTextField();
         btnRequest = new javax.swing.JButton();
         btnUpdateFunds = new javax.swing.JButton();
+        lblFunds1 = new javax.swing.JLabel();
+        lblFunds2 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
+        setBackground(new java.awt.Color(204, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1000, 750));
 
         tblInventoryReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,11 +82,14 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblRequest);
 
-        lblNeed.setText("Funds Needed");
+        lblNeed.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblNeed.setText("Funds Needed : ");
 
-        lblItem.setText("Items");
+        lblItem.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblItem.setText("Items : ");
 
-        lblFunds.setText("Available Funds");
+        lblFunds.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblFunds.setText("Inventory Table");
 
         txtFunds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +97,9 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRequest.setBackground(new java.awt.Color(0, 0, 156));
+        btnRequest.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnRequest.setText("Request");
         btnRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,12 +107,21 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdateFunds.setBackground(new java.awt.Color(0, 0, 156));
+        btnUpdateFunds.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnUpdateFunds.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdateFunds.setText("Update Funds");
         btnUpdateFunds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateFundsActionPerformed(evt);
             }
         });
+
+        lblFunds1.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblFunds1.setText("Total Available Funds : ");
+
+        lblFunds2.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblFunds2.setText("Request Status Table:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,48 +130,65 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblNeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblItem, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNeed)
-                            .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lblFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(75, 75, 75)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNeed)
+                                    .addGap(34, 34, 34))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(lblItem, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNeed)
+                                .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(48, 48, 48)
+                            .addComponent(btnRequest))
+                        .addComponent(lblFunds2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblFunds1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnUpdateFunds))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFunds)
+                    .addComponent(lblFunds1)
                     .addComponent(txtFunds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addComponent(lblFunds)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNeed)
-                    .addComponent(txtNeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblItem)
-                    .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRequest))
-                .addGap(53, 53, 53)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnRequest)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtNeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblNeed))
+                            .addGap(47, 47, 47))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblItem))))
+                .addGap(40, 40, 40)
+                .addComponent(lblFunds2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(btnUpdateFunds)
-                .addGap(14, 14, 14))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,7 +213,10 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
             return;
         }
 
+        JOptionPane.showMessageDialog(this, "Funds were requested Succesfully. Please wait for approval","Info", JOptionPane.INFORMATION_MESSAGE);
         specialist.makeRequestToFieldResponseCoordinator(coordinator,specialist.getName(), items, fundsNeed);
+        txtNeed.setText("");
+        txtItem.setText("");
         
     }//GEN-LAST:event_btnRequestActionPerformed
 
@@ -195,6 +233,8 @@ public class ResourceSpecialistJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblFunds;
+    private javax.swing.JLabel lblFunds1;
+    private javax.swing.JLabel lblFunds2;
     private javax.swing.JLabel lblItem;
     private javax.swing.JLabel lblNeed;
     private javax.swing.JTable tblInventoryReport;
