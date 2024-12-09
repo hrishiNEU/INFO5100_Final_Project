@@ -4,8 +4,6 @@
  */
 package business.db4outil;
 
-
-
 import business.ConfigureANetwork;
 import business.Network;
 

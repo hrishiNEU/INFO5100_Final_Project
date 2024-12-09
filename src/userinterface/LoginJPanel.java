@@ -5,8 +5,6 @@
 package userinterface;
 
 import business.Network;
-import business.enterprise.Enterprise;
-import business.organization.Organization;
 import business.role.Citizen;
 import business.role.CitizenDirectory;
 import business.role.DamageAnalyst;
@@ -341,7 +339,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect credentials for Damage Analyst", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Logistic Coordinator", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -374,7 +372,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect credentials for Damage Analyst", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Citizen", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);

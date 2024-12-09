@@ -34,7 +34,12 @@ public class CitizenDirectory {
     }
     
     public static Citizen findCitizenByName(String name) {
-        return citizenMap.get(name);
+        for (Citizen citizen : citizenMap.values()) {
+        if (citizen.getName().equals(name)) {
+            return citizen; // Return the citizen if name matches
+        }
+      }
+    return null;
     }
     
 
