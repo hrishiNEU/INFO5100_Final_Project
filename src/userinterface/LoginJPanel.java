@@ -66,7 +66,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         splitPane.setDividerLocation(350);
 
-        leftPanel.setBackground(java.awt.SystemColor.activeCaption);
+        leftPanel.setBackground(new java.awt.Color(153, 204, 255));
         leftPanel.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         useridlbl.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
@@ -99,7 +99,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         });
 
         loginbtn.setBackground(new java.awt.Color(0, 0, 153));
-        loginbtn.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
+        loginbtn.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         loginbtn.setForeground(new java.awt.Color(255, 255, 255));
         loginbtn.setText("LOGIN");
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +160,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         splitPane.setLeftComponent(leftPanel);
 
+        workArea.setBackground(new java.awt.Color(204, 255, 255));
         workArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         splitPane.setRightComponent(workArea);
 
