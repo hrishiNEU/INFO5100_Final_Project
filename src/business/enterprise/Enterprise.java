@@ -7,7 +7,6 @@ package business.enterprise;
  * @author abhis
  */
 import business.organization.Organization;
-import business.organization.OrganizationDirectory;
 import java.util.ArrayList;
 
 public class Enterprise {
@@ -17,6 +16,7 @@ public class Enterprise {
 
     public Enterprise(String type) {
         this.type = type;
+        this.orglist = new ArrayList<>(); 
     }
 
     public String getType() {

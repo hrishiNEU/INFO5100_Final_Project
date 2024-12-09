@@ -47,16 +47,22 @@ public class CitizenJPanel extends javax.swing.JPanel {
         btnVolunteerSignup = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 255));
         setPreferredSize(new java.awt.Dimension(1000, 1000));
 
+        txtNewsFlash.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         txtNewsFlash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNewsFlashActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("News Flash");
+        jLabel1.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        jLabel1.setText("Disaster Alerts");
 
+        btnVolunteerSignup.setBackground(new java.awt.Color(0, 0, 153));
+        btnVolunteerSignup.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnVolunteerSignup.setForeground(new java.awt.Color(255, 255, 255));
         btnVolunteerSignup.setText("Register As a Volunteer");
         btnVolunteerSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +70,9 @@ public class CitizenJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnHelp.setBackground(new java.awt.Color(0, 0, 153));
+        btnHelp.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnHelp.setForeground(new java.awt.Color(255, 255, 255));
         btnHelp.setText("Register As a Patient");
         btnHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,29 +85,28 @@ public class CitizenJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNewsFlash, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnVolunteerSignup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(btnVolunteerSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnHelp))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewsFlash, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(206, 206, 206)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNewsFlash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(btnVolunteerSignup)
-                .addGap(42, 42, 42)
-                .addComponent(btnHelp)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(92, 92, 92)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolunteerSignup)
+                    .addComponent(btnHelp))
+                .addContainerGap(617, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

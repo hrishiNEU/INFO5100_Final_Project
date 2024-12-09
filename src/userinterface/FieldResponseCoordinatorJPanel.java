@@ -6,6 +6,7 @@ package userinterface;
 
 import business.role.FieldResponseCoordinator;
 import business.role.ResourceSpecialist;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,7 +42,12 @@ public class FieldResponseCoordinatorJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAllocateFunds = new javax.swing.JTable();
         btnSendFunds = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNewQuantity = new javax.swing.JTextField();
+        btnModifyQuantity = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 255));
         setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         tblDamageReport.setModel(new javax.swing.table.DefaultTableModel(
@@ -52,12 +58,13 @@ public class FieldResponseCoordinatorJPanel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Damage Report", "Damage Value"
+                "Natural Disaster", "Damage Value"
             }
         ));
         jScrollPane1.setViewportView(tblDamageReport);
 
-        lblFunds.setText("Available Funds");
+        lblFunds.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblFunds.setText("Total Available Funds : ");
 
         txtFunds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,11 +80,14 @@ public class FieldResponseCoordinatorJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Aid Request By", "Items", "Value"
+                "Funds Requested By", "Items", "Value"
             }
         ));
         jScrollPane2.setViewportView(tblAllocateFunds);
 
+        btnSendFunds.setBackground(new java.awt.Color(0, 0, 156));
+        btnSendFunds.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnSendFunds.setForeground(new java.awt.Color(255, 255, 255));
         btnSendFunds.setText("Send Funds");
         btnSendFunds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,41 +95,76 @@ public class FieldResponseCoordinatorJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        jLabel1.setText("Damage Report Table");
+
+        jLabel2.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        jLabel2.setText("Allocate Funds");
+
+        txtNewQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewQuantityActionPerformed(evt);
+            }
+        });
+
+        btnModifyQuantity.setBackground(new java.awt.Color(0, 0, 156));
+        btnModifyQuantity.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        btnModifyQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        btnModifyQuantity.setText("Modify Value");
+        btnModifyQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyQuantityActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFunds)
-                                .addGap(15, 15, 15)
-                                .addComponent(txtFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSendFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                        .addComponent(lblFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 563, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnModifyQuantity)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtNewQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSendFunds)))
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFunds)
                     .addComponent(txtFunds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(62, 62, 62)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(56, 56, 56)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnSendFunds)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSendFunds)
+                    .addComponent(txtNewQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModifyQuantity))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -129,20 +174,87 @@ public class FieldResponseCoordinatorJPanel extends javax.swing.JPanel {
 
     private void btnSendFundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFundsActionPerformed
         // TODO add your handling code here:
-        double newValue = coordinator.getFunds() - coordinator.getFundsNeeded();
-        txtFunds.setText(String.valueOf(newValue));
-        specialist.fundsApprovedBy(coordinator, coordinator.getFundsNeeded(), true);
+        int selectedRowIndex = tblAllocateFunds.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a request to allocate funds.");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblAllocateFunds.getModel();
+        Object valueObj = model.getValueAt(selectedRowIndex, 2);
+
+        if (valueObj == null) {
+            JOptionPane.showMessageDialog(this, "Selected request has no value specified.");
+            return;
+        }
+
+        try {
+            double requestedFunds = Double.parseDouble(valueObj.toString());
+            double availableFunds = coordinator.getFunds();
+            if (requestedFunds > availableFunds) {
+                JOptionPane.showMessageDialog(this, "Requested funds exceed available funds. Please modify the value.");
+                return;
+            }
+            double newAvailableFunds = availableFunds - requestedFunds;
+            coordinator.setFunds(newAvailableFunds);
+
+            txtFunds.setText(String.valueOf(newAvailableFunds));
+
+            specialist.fundsApprovedBy(coordinator, requestedFunds, true);
+
+            JOptionPane.showMessageDialog(this, "Funds sent to Resource Specialist" +"("+ specialist.getName() +")" );
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid fund value. Please enter a valid number.");
+      }
+       
     }//GEN-LAST:event_btnSendFundsActionPerformed
+
+    private void txtNewQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewQuantityActionPerformed
+
+    private void btnModifyQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyQuantityActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblAllocateFunds.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row first.");
+            return;
+        }
+
+        String newQuantityStr = txtNewQuantity.getText();
+
+        if (newQuantityStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a value");
+            return;
+        }
+
+        try {
+
+            double newQuantity = Double.parseDouble(newQuantityStr);
+
+            DefaultTableModel model = (DefaultTableModel) tblAllocateFunds.getModel();
+            model.setValueAt(newQuantity, selectedRowIndex, 2);
+            JOptionPane.showMessageDialog(this, "Value updated successfully.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid number.");
+      }
+    }//GEN-LAST:event_btnModifyQuantityActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModifyQuantity;
     private javax.swing.JButton btnSendFunds;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblFunds;
     private javax.swing.JTable tblAllocateFunds;
     private javax.swing.JTable tblDamageReport;
     private javax.swing.JTextField txtFunds;
+    private javax.swing.JTextField txtNewQuantity;
     // End of variables declaration//GEN-END:variables
 
     private void populateDamageTable() {

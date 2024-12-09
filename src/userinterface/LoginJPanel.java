@@ -5,8 +5,7 @@
 package userinterface;
 
 import business.Network;
-import business.enterprise.Enterprise;
-import business.organization.Organization;
+import business.enterprise.EnterpriseDirectory;
 import business.role.Citizen;
 import business.role.CitizenDirectory;
 import business.role.DamageAnalyst;
@@ -34,12 +33,14 @@ public class LoginJPanel extends javax.swing.JPanel {
      */
     
     Network network;
+    EnterpriseDirectory enterpriseDirectory;
     MainJFrame mainPanel;
     
-    public LoginJPanel(MainJFrame mainPanel,Network network) {
+    public LoginJPanel(MainJFrame mainPanel,Network network, EnterpriseDirectory enterpriseDirectory) {
         initComponents();
         this.mainPanel = mainPanel;
         this.network = network;
+        this.enterpriseDirectory = enterpriseDirectory;
         workArea.setLayout(new CardLayout()); 
     }
 
@@ -66,12 +67,12 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         splitPane.setDividerLocation(350);
 
-        leftPanel.setBackground(java.awt.SystemColor.activeCaption);
+        leftPanel.setBackground(new java.awt.Color(153, 204, 255));
         leftPanel.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         useridlbl.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         useridlbl.setForeground(new java.awt.Color(0, 0, 153));
-        useridlbl.setText("ID/Type:");
+        useridlbl.setText("User Name");
 
         passwordlbl.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         passwordlbl.setForeground(new java.awt.Color(0, 0, 153));
@@ -91,7 +92,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         CheckBox.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         CheckBox.setForeground(new java.awt.Color(0, 0, 153));
-        CheckBox.setText(" show password ");
+        CheckBox.setText(" Show password ");
         CheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckBoxActionPerformed(evt);
@@ -114,7 +115,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         comboSelected.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         comboSelected.setForeground(new java.awt.Color(0, 0, 153));
-        comboSelected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrartor", "Citizen", "Damage Analyst", "Emergency Operation Coordinator", "Field Response Coordinator", "Hospital Manager", "Logistics Coordinator", "Resource Specialist", "Response Team Agent", "Response Team Coordinator", "Volunteer Coordinator"}));
+        comboSelected.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Citizen", "Damage Analyst", "Emergency Operation Coordinator", "Field Response Coordinator", "Hospital Manager", "Logistics Coordinator", "Resource Specialist", "Response Team Agent", "Response Team Coordinator", "Volunteer Coordinator"}));
         comboSelected.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboSelectedActionPerformed(evt);
@@ -140,9 +141,9 @@ public class LoginJPanel extends javax.swing.JPanel {
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(137, 137, 137)
+                .addGap(143, 143, 143)
                 .addComponent(useridlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(useridtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(passwordlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,16 +151,18 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addComponent(passwordpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CheckBox)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(useridlbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(loginbtn))
+                .addGap(18, 18, 18)
+                .addComponent(loginbtn)
+                .addContainerGap())
         );
 
         splitPane.setLeftComponent(leftPanel);
 
+        workArea.setBackground(new java.awt.Color(204, 255, 255));
         workArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         splitPane.setRightComponent(workArea);
 
@@ -202,7 +205,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         String username = useridtxt.getText();
         
         switch (role.toLowerCase()) {
-            case "system administrator":
+            case "administrator":
                 loginSystemAdministrator(username, password);
                 break;
             case "emergency operation coordinator":
@@ -243,14 +246,13 @@ public class LoginJPanel extends javax.swing.JPanel {
     private void loginSystemAdministrator(String username, String password) {
         SystemAdmin admin = SystemAdmin.getInstance();
         if (admin.getAdminName().equals(username) && admin.getAdminPassword().equals(password)) {
-            // Login successful, navigate to the System Administrator panel
-            // AdminJPanel panel = new AdminJPanel(homeJPanel, business);
-            // homeJPanel.add("AdminJPanel", panel);
-            // CardLayout layout = (CardLayout) homeJPanel.getLayout();
-            // layout.next(homeJPanel);
+             SystemAdminJPanel panel = new SystemAdminJPanel();
+             workArea.add("SystemAdminJPanel", panel);
+             CardLayout layout = (CardLayout) workArea.getLayout();
+             layout.next(workArea);
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect credentials for System Administrator", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+        } 
     }
     private void loginEmergencyOperationCoordinator(String username, String password) {
         EmergencyOperationCoordinator coordinator = EmergencyOperationCoordinator.findCoordinatorByName(username);
@@ -263,19 +265,15 @@ public class LoginJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect credentials for Damage Analyst", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Emergency Operations Coordinator", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Emergency Operations Coordinator not found", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
     private void loginResourceSpecialist(String username, String password) {
-<<<<<<< HEAD
-        ResourceSpecialist specialist = ResourceSpecialist.findSpecialist();
-=======
         ResourceSpecialist specialist = ResourceSpecialist.findSpecialistByName(username);
->>>>>>> 59c5cf9fe150a653f5526d1a09c3c1094e494dac
         if (specialist != null) { 
             if(new String(specialist.getPassword()).equals(password)){
                 ResourceSpecialistJPanel panel = new ResourceSpecialistJPanel();
@@ -345,7 +343,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect credentials for Damage Analyst", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Logistic Coordinator", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -378,7 +376,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect credentials for Damage Analyst", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Incorrect credentials for Citizen", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Damage Analyst not found", "Warning", JOptionPane.WARNING_MESSAGE);

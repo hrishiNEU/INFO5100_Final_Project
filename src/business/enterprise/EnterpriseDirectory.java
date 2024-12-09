@@ -11,7 +11,7 @@ import business.Network;
 import business.organization.Organization;
 import java.util.ArrayList;
 
-public class EnterpriseDirectory {
+public class  EnterpriseDirectory {
     Network network;
     ArrayList<Enterprise> enterpriselist;
     ArrayList<Organization> orglist;
@@ -43,5 +43,9 @@ public class EnterpriseDirectory {
     
     public ArrayList<Enterprise> getAllEnter(){
         return enterpriselist;
+    }
+    
+     public EnterpriseDirectory getEnterpriseDirectory() {
+        return this;  // Return the current instance of EnterpriseDirectory
     }
 }
